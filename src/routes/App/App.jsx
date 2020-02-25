@@ -1,9 +1,17 @@
 import React from 'react';
+
+// Components
+import TrendingUsers from 'components/TrendingUsers/TrendingUsers';
+import TopRepos from 'components/TopRepos/TopRepos';
+
 import * as S from './App.styled';
 
 const App = () => (
   <S.Container>
-    <h1>Home</h1>
+    <S.Wrapper>
+      <TrendingUsers />
+      <TopRepos />
+    </S.Wrapper>
   </S.Container>
 );
 
