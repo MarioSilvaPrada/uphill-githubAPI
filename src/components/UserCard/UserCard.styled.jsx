@@ -95,7 +95,7 @@ export const WrapperRepoCard = styled.div`
   padding-top: 1rem;
   border-top: 1px solid ${(props) => props.theme.grey};
   margin-top: 1rem;
-`
+`;
 
 export const StarWrapper = styled.div`
   display: flex;
