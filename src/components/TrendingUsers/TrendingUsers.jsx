@@ -5,10 +5,10 @@ import UserCard from 'components/UserCard/UserCard';
 import * as S from './TrendingUsers.styled';
 
 const TrendingUsers = () => {
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [ infoUsers, setInfoUsers ] = useState([]);
-  const [ repoUser, setRepoUser ] = useState([]);
+  const [infoUsers, setInfoUsers] = useState([]);
+  const [repoUser, setRepoUser] = useState([]);
 
   const getUsers = () => {
     // get top users sorted by followers
@@ -66,7 +66,9 @@ const TrendingUsers = () => {
         <h1>Loading</h1>
       ) : (
         <S.CardsWrapper>
-          {infoUsers.map(({ login, name, avatar, github, followers }) => (
+          {infoUsers.map(({
+            login, name, avatar, github, followers,
+          }) => (
             <UserCard
               login={login}
               name={name}
