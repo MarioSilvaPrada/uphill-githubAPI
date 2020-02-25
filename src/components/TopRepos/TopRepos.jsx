@@ -32,6 +32,7 @@ const TopRepos = () => {
             name, stargazers_count, description, html_url,
           }, i) => (
             <RepoCard
+              key={name}
               name={name}
               stars={stargazers_count}
               description={description}

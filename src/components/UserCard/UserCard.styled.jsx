@@ -83,14 +83,19 @@ export const Button = styled.a`
 `;
 
 export const RepoCard = styled.div`
-  width: 90%;
   border-radius: 5px;
   border: 1px solid ${(props) => props.theme.grey};
   border-left: 3px solid ${(props) => props.theme.mainColor};
   padding: 1.2rem;
   font-size: .8rem;
-  margin-top: 1.2rem;
 `;
+
+export const WrapperRepoCard = styled.div`
+  width: 90%;
+  padding-top: 1rem;
+  border-top: 1px solid ${(props) => props.theme.grey};
+  margin-top: 1rem;
+`
 
 export const StarWrapper = styled.div`
   display: flex;

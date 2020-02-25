@@ -70,6 +70,7 @@ const TrendingUsers = () => {
             login, name, avatar, github, followers,
           }) => (
             <UserCard
+              key={login}
               login={login}
               name={name}
               avatar={avatar}
