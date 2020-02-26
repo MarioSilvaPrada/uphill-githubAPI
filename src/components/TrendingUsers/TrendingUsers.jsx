@@ -6,10 +6,10 @@ import Spinner from 'components/Spinner/Spinners';
 import * as S from './TrendingUsers.styled';
 
 const TrendingUsers = () => {
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [ infoUsers, setInfoUsers ] = useState([]);
-  const [ repoUser, setRepoUser ] = useState([]);
+  const [infoUsers, setInfoUsers] = useState([]);
+  const [repoUser, setRepoUser] = useState([]);
 
   const getUsers = () => {
     // get top users sorted by followers
@@ -68,7 +68,9 @@ const TrendingUsers = () => {
         <Spinner />
       ) : (
         <S.CardsWrapper>
-          {infoUsers.map(({ login, name, avatar, github, followers }) => (
+          {infoUsers.map(({
+            login, name, avatar, github, followers,
+          }) => (
             <UserCard
               key={login}
               login={login}
