@@ -6,10 +6,10 @@ import Spinner from 'components/Spinner/Spinners';
 import * as S from './ActiveUsers.styled';
 
 const ActiveUsers = () => {
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [ infoUsers, setInfoUsers ] = useState([]);
-  const [ repoUser, setRepoUser ] = useState([]);
+  const [infoUsers, setInfoUsers] = useState([]);
+  const [repoUser, setRepoUser] = useState([]);
 
   const getUsers = () => {
     // get top users sorted by events (commits) with javascript as language
@@ -79,7 +79,9 @@ const ActiveUsers = () => {
         <Spinner />
       ) : (
         <S.CardsWrapper>
-          {infoUsers.map(({ login, name, avatar, github, followers }) => (
+          {infoUsers.map(({
+            login, name, avatar, github, followers,
+          }) => (
             <UserCard
               key={login}
               login={login}
