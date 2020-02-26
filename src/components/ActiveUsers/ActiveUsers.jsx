@@ -12,7 +12,7 @@ const ActiveUsers = () => {
   const [repoUser, setRepoUser] = useState([]);
 
   const getUsers = () => {
-    // get top users sorted by followers
+    // get top users sorted by events (commits) with javascript as language of the repo
     api.get('search/users?q=language:javascript&sort=events&order=desc').then((res) => {
       // Array with top 3 users
       const userArr = res.data.items.slice(0, 3);
@@ -31,8 +31,7 @@ const ActiveUsers = () => {
               github: data.data.html_url,
               location: data.data.location,
             });
-            // sort array by followers in case we get users in a different order
-            setInfoUsers(newArr.sort((a, b) => b.followers - a.followers));
+            setInfoUsers(newArr);
           })
           .then(() => {
             // fetch a repo from each user so we can display it
