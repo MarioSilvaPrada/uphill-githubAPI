@@ -6,10 +6,14 @@ import Spinner from 'components/Spinner/Spinners';
 import * as S from './TrendingUsers.styled';
 
 const TrendingUsers = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [ isLoading, setIsLoading ] = useState(true);
 
-  const [infoUsers, setInfoUsers] = useState([]);
-  const [repoUser, setRepoUser] = useState([]);
+  const [ infoUsers, setInfoUsers ] = useState([]);
+  const [ repoUser, setRepoUser ] = useState([]);
+
+  const getApi = () => {
+    api.get('search/users?q=events:%3E42+followers:%3E1000').then((res) => console.log(res))
+  }
 
   const getUsers = () => {
     // get top users sorted by followers
@@ -31,7 +35,8 @@ const TrendingUsers = () => {
               github: data.data.html_url,
               location: data.data.location,
             });
-            setInfoUsers(newArr);
+            // sort array by followers in case we get users in a different order
+            setInfoUsers(newArr.sort((a, b) => b.followers - a.followers));
           })
           .then(() => {
             // fetch a repo from each user so we can display it
@@ -58,6 +63,7 @@ const TrendingUsers = () => {
 
   useEffect(() => {
     getUsers();
+    getApi();
   }, []);
 
   return (
@@ -67,9 +73,7 @@ const TrendingUsers = () => {
         <Spinner />
       ) : (
         <S.CardsWrapper>
-          {infoUsers.map(({
-            login, name, avatar, github, followers,
-          }) => (
+          {infoUsers.map(({ login, name, avatar, github, followers }) => (
             <UserCard
               key={login}
               login={login}
