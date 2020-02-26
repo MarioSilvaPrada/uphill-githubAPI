@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from 'api/api';
 
+import Spinner from 'components/Spinner/Spinners';
 import RepoCard from 'components/RepoCard/RepoCard';
 import * as S from './TopRepos.styled';
 
@@ -25,7 +26,7 @@ const TopRepos = () => {
     <S.Container>
       <S.Title>Top Repositories</S.Title>
       {isLoading ? (
-        <h1>Loading</h1>
+        <Spinner />
       ) : (
         <S.CardsWrapper>
           {repos.map(({

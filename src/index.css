@@ -19,3 +19,15 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 85%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 75%;
+  }
+}

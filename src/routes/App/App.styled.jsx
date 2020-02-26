@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     height: 100%;
     background: ${(props) => props.theme.white(0.5)};
-    padding: 2.5rem 5.25rem;
+    padding: 2.5rem;
 `;
 
 export const Title = styled.div`color: red;`;

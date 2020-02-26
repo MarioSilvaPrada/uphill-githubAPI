@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from 'api/api';
 
 import UserCard from 'components/UserCard/UserCard';
+import Spinner from 'components/Spinner/Spinners';
 import * as S from './TrendingUsers.styled';
 
 const TrendingUsers = () => {
@@ -63,7 +64,7 @@ const TrendingUsers = () => {
     <S.Container>
       <S.Title>Trending Users</S.Title>
       {isLoading ? (
-        <h1>Loading</h1>
+        <Spinner />
       ) : (
         <S.CardsWrapper>
           {infoUsers.map(({

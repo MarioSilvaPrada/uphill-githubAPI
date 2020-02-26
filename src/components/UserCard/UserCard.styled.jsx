@@ -33,6 +33,10 @@ export const Card = styled.div`
       display: none;
     }
   }
+
+  @media screen and (max-width: 750px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const Avatar = styled.img`

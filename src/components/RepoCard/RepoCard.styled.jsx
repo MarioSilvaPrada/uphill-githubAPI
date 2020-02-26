@@ -9,6 +9,15 @@ export const CardRepo = styled.a`
   box-shadow: 0 2px 4px 0 rgba(235, 237, 238, 0.8);
   padding: 1.5rem 1rem;
   border-top: 4px solid ${(props) => props.theme.colorArr[props.colorIndex]};
+  transition: 1s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media screen and (max-width: 750px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const RepoName = styled.p`
