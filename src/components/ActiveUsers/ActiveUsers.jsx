@@ -12,7 +12,7 @@ const ActiveUsers = () => {
   const [repoUser, setRepoUser] = useState([]);
 
   const getUsers = () => {
-    // get top users sorted by events (commits) with javascript as language of the repo
+    // get top users sorted by events (commits) with javascript as language
     api.get('search/users?q=language:javascript&sort=events&order=desc').then((res) => {
       // Array with top 3 users
       const userArr = res.data.items.slice(0, 3);
