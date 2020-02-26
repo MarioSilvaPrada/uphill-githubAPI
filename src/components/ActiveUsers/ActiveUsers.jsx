@@ -3,21 +3,17 @@ import api from 'api/api';
 
 import UserCard from 'components/UserCard/UserCard';
 import Spinner from 'components/Spinner/Spinners';
-import * as S from './TrendingUsers.styled';
+import * as S from './ActiveUsers.styled';
 
-const TrendingUsers = () => {
+const ActiveUsers = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [infoUsers, setInfoUsers] = useState([]);
   const [repoUser, setRepoUser] = useState([]);
 
-  const getApi = () => {
-    api.get('search/users?q=language:javascript&sort=events&order=desc').then((res) => console.log(res.data));
-  };
-
   const getUsers = () => {
     // get top users sorted by followers
-    api.get('search/users?q=followers:%3E10000&sort=followers&order=desc').then((res) => {
+    api.get('search/users?q=language:javascript&sort=events&order=desc').then((res) => {
       // Array with top 3 users
       const userArr = res.data.items.slice(0, 3);
 
@@ -63,12 +59,11 @@ const TrendingUsers = () => {
 
   useEffect(() => {
     getUsers();
-    getApi();
   }, []);
 
   return (
     <S.Container>
-      <S.Title>Trending Users</S.Title>
+      <S.Title>Active Users</S.Title>
       {isLoading ? (
         <Spinner />
       ) : (
@@ -92,4 +87,4 @@ const TrendingUsers = () => {
   );
 };
 
-export default TrendingUsers;
+export default ActiveUsers;
