@@ -7,8 +7,8 @@ export const CardsWrapper = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 17rem;
-  min-height: 20rem;
+  width: 17.5rem;
+  min-height: 22rem;
   display: flex;
   flex-direction: column;
   align-items: center;

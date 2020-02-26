@@ -6,10 +6,10 @@ import Spinner from 'components/Spinner/Spinners';
 import * as S from './ActiveUsers.styled';
 
 const ActiveUsers = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [ isLoading, setIsLoading ] = useState(true);
 
-  const [infoUsers, setInfoUsers] = useState([]);
-  const [repoUser, setRepoUser] = useState([]);
+  const [ infoUsers, setInfoUsers ] = useState([]);
+  const [ repoUser, setRepoUser ] = useState([]);
 
   const getUsers = () => {
     // get top users sorted by events (commits) with javascript as language
@@ -39,10 +39,22 @@ const ActiveUsers = () => {
             userArr.map((userInfo) => {
               api
                 .get(`users/${userInfo.login}/repos`)
-                .then((info) => ({
-                  repo: info.data[0],
-                  owner: info.data[0].owner.login,
-                }))
+                .then((info) => {
+                  // map through user repos and check which one has more stars
+                  let numberStars = 0;
+                  let repoSelected = null;
+                  info.data.map((repo) => {
+                    if (repo.stargazers_count > numberStars) {
+                      repoSelected = repo;
+                      numberStars = repo.stargazers_count;
+                    }
+                    return null;
+                  });
+                  return {
+                    repo: repoSelected,
+                    owner: info.data[0].owner.login,
+                  };
+                })
                 .then((info) => {
                   repoArr.push(info);
                   setRepoUser(repoArr);
@@ -67,9 +79,7 @@ const ActiveUsers = () => {
         <Spinner />
       ) : (
         <S.CardsWrapper>
-          {infoUsers.map(({
-            login, name, avatar, github, followers,
-          }) => (
+          {infoUsers.map(({ login, name, avatar, github, followers }) => (
             <UserCard
               key={login}
               login={login}
