@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    height: 100%;
     background: ${(props) => props.theme.white(0.5)};
     padding: 2.5rem;
 `;
